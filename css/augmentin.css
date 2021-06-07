@@ -1,9 +1,195 @@
 body {
 	font-family: Arial, Helvetica, sans-serif;
+	margin: 0px;
+}
+
+header {
+	position: fixed;
+	right: 0;
+	left: 0;
+	z-index: 2;
+	color: white;
+	background-color: #000066;
+	clear: left;
+	text-align: center;
+	font-weight: bold;
+}
+
+.droprest {
+	display: none;
+	position: absolute;
+	top: 46px;
+	color: white;
+	background-color: #000066;
+	text-align: inherit;
+	font-weight: inherit;
+	padding: inherit;
+}
+
+.dropdown:hover .droprest {
+	display: block;
+}
+
+.droprest:hover {
+	color: black;
+	background-color: #f1f1f1;
+}
+
+.dropmain, .droprest {
+	margin: 0;
+	padding: 14px 16px;
+}
+
+.dropmain:not(:hover) {
+	color: white;
+	background-color: #000066;
+}
+
+footer {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 2;
+	color: white;
+	background-color: #000066;
+	clear: left;
+	text-align: center;
+	font-size: 8pt;
+	font-weight: bold;
+}
+
+h1 { 
+	display: block;
+	font-size: 2em;
+	margin-top: 0.67em;
+	margin-bottom: 0.67em;
+	margin-left: 0;
+	margin-right: 0;
+	font-weight: bold;
+}
+
+h2 {
+	display: block;
+	font-size: 1.5em;
+	margin-top: 1.17em;
+	margin-bottom: 0.83em;
+	margin-left: 0;
+	margin-right: 0;
+	font-weight: bold;
+}
+
+h3 { 
+	display: block;
+	font-size: 1.25em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	margin-left: 0;
+	margin-right: 0;
+	font-weight: bold;
+}
+
+h4 { 
+	display: block;
+	font-size: 1.1em;
+	margin-top: 1.66em;
+	margin-bottom: 0em;
+	margin-left: 0;
+	margin-right: 0;
+	font-weight: bold;
+}
+
+h5 { 
+	display: block;
+	font-size: .83em;
+	margin-top: 2.0em;
+	margin-bottom: 0em;
+	margin-left: 0;
+	margin-right: 0;
+	font-weight: bold;
+}
+
+h6 { 
+	display: block;
+	font-size: .67em;
+	margin-top: 2.66em;
+	margin-bottom: 0em;
+	margin-left: 0;
+	margin-right: 0;
+	font-weight: bold;
+}
+
+a {
+	cursor: pointer;
 }
 
 div {
 	margin-bottom: 5px;
+}
+
+ul.menu {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: auto;
+	margin-left: 6pt;
+	margin-right: 6pt;
+}
+
+ul.menu li {
+	color: #000;
+	text-decoration: none;
+	font-weight: bold;
+	cursor: pointer;
+	float: left;
+	display: inline;
+	text-align: center;
+	color: white;
+}
+
+header ul.menu li {
+	padding: 14px 16px;
+}
+
+footer ul.menu li {
+	padding: 10px 16px;
+}
+
+ul.menu li:hover:not(.active) {
+	background-color: #e2f3ff;
+	color: #000066;
+}
+
+ul.menu li.noclick:hover {
+	color: white;
+	background-color: #000066;
+	cursor: default;
+}
+
+ul.menu li.homeclick:hover {
+	color: #000066;
+	background-color: #ffd86b;
+}
+
+ul.menu li.active {
+	background-color: #fbedff;
+	color: #0000a8;
+}
+
+article {
+	display: inline-block;
+	position: fixed;
+	margin: 0px;
+	padding: 0px 28px;
+	top: 0px;
+	bottom: 32px;
+	overflow: auto;
+	scroll-behavior: smooth;
+}
+
+.center{
+	text-align: center;
 }
 
 .tooltip {
@@ -76,6 +262,11 @@ div {
 	border-bottom: 1px solid #dbdbdb;
 }
 
+table {
+	display: inline-block;
+	border-collapse: collapse;
+}
+
 table .notes {
 	text-align: left !important;
 	font-size: 10pt;
@@ -85,6 +276,10 @@ table input[type="text"] {
 	width: 3em;
 	text-align: right;
 	font-size: 12pt;
+}
+
+td {
+	padding: 4px 4px;
 }
 
 select {
@@ -157,4 +352,47 @@ select {
 
 .secondary_good {
 	/*Nothing*/
+}
+
+
+
+@media print{
+	header {
+		display: none;
+	}
+
+	footer {
+		display: none;
+	}
+
+	article {
+		display: block;
+		position: static;
+		top: 0px;
+		bottom: 0px;
+	}
+}
+
+
+
+@media only screen and (max-width: 600px) {
+	header {
+		font-size: 24pt;
+	}
+
+	footer {
+		font-size: 20pt;
+	}
+
+	article {
+		top: 195px;
+	}
+
+	header ul.menu li {
+		width: 100%;
+	}
+
+	td {
+		font-size: 2.5em;
+	}
 }
