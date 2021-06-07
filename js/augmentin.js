@@ -577,6 +577,9 @@ function refresh(listener) {
 					}
 				}
 
+				// Store whether at least one row is showing
+				var one_row = false;
+
 				for(var i = 0; i < formulations.length; i++) {
 					// Calculate dose increment
 					var increment = NaN;
@@ -587,7 +590,6 @@ function refresh(listener) {
 							liquid_correction = 1/5;
 
 							// Increments of 0.1 mL if volume <3 mL, 0.2 mL if volume >3 mL
-							// TODO
 							if(amox_dose_perkg * wt / (liquid_correction * formulations[i].amox_conc) >= 3) {
 								increment = 0.2;
 							} else {
@@ -654,11 +656,16 @@ function refresh(listener) {
 						formulations[i].show = true;
 						formulations[i].row.classList.add("appropriate");
 						formulations[i].row.classList.remove("inappropriate");
+						one_row = true;
 					} else {
 						formulations[i].show = false;
 						formulations[i].row.classList.remove("appropriate");
 						formulations[i].row.classList.add("inappropriate");
 					}
+				}
+
+				if(!one_row) {
+					show_el.value = "all";
 				}
 			}
 		}
