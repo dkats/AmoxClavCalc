@@ -425,15 +425,6 @@ function refresh(listener) {
 	freq = parseInt(freq_el.value);
 	wt = parseFloat(wt_el.value);
 
-	if((listener == "age" || listener == "indication") && !age_over.checked && age_under.checked) {
-		// If <3 months old --> 30 mg/kg/day
-		amox_day = 30;
-		amox_el.value = amox_day;
-
-		if(!isNaN(freq)) {
-			amox_dose_perkg = amox_day / freq;
-		}
-	}
 	if(listener == "dose") {
 		switch(amox_u) {
 			case "day":
@@ -446,7 +437,8 @@ function refresh(listener) {
 				break;
 		}
 	}
-	if((listener == "indication" || listener == "age") && !age_under.checked) {
+
+	if(listener == "indication" || listener == "age") {
 		validate(amox_el.id);
 
 		switch(indication) {
@@ -514,6 +506,17 @@ function refresh(listener) {
 			th_amox_mgkgday_el.innerHTML = headerTooltip(th_amox_mgkgday_text, "Max dose: " + amox_day_max + " mg/day");	
 		}
 	}
+
+	if((listener == "age" || listener == "indication") && !age_over.checked && age_under.checked) {
+		// If <3 months old --> 30 mg/kg/day
+		amox_day = 30;
+		amox_el.value = amox_day;
+
+		if(!isNaN(freq)) {
+			amox_dose_perkg = amox_day / freq;
+		}
+	}
+
 	if(listener == "weight") {
 		validate(wt_el.id);
 		wt = parseFloat(wt_el.value);
@@ -595,7 +598,7 @@ function refresh(listener) {
 							increment = 0.5;
 							break;
 					}
-					
+
 					// Calculate maximums
 					var quant_max = NaN;
 					var amox_max = NaN;
