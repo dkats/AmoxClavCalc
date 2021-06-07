@@ -409,6 +409,11 @@ var t1000 = new augmentin(t1000_id, "16:1", "tablet", 1000, 62.5, t1000_quant_id
 
 var formulations = [t250, l125, l250, t500, l200, c200, l400, c400, t875, l600, t1000];
 
+// Start with clavulanate mg/day column hidden
+for(var i = 0; i < class_clav_mg.length; i++) {
+	class_clav_mg[i].style.display = "none";
+}
+
 var amox_day = NaN;
 var amox_dose_perkg = NaN;
 var amox_dose_max = NaN;
