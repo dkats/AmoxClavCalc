@@ -1,0 +1,160 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+div {
+	margin-bottom: 5px;
+}
+
+.tooltip {
+	position: relative;
+	display: inline-block;
+	border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+	visibility: hidden;
+	width: 16em;
+	background-color: black;
+	color: #fff;
+	font-weight: normal;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px 5px;
+
+	/* Position the tooltip */
+	position: absolute;
+	z-index: 1;
+	top: 105%;
+	left: 15px;
+}
+
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+}
+
+#input {
+	margin-top: 30px;
+	margin-bottom: 15px;
+}
+
+#formulations {
+	margin-top: 15px;
+	margin-bottom: 30px;
+}
+
+#input td {
+	text-align: left;
+	padding: 3px;
+}
+
+#input td:first-child {
+	text-align: right;
+}
+
+#formulations tr:hover:not(.nohover) {
+	font-weight: bold;
+}
+
+#formulations th {
+	vertical-align: bottom;
+	text-align: center;
+	padding: 2px 5px;
+	border-bottom: 1px solid black;
+}
+
+#formulations td {
+	text-align: center;
+}
+
+#formulations tr:last-child {
+	border-style: none;
+}
+
+#formulations tr {
+	padding: 3px 0 3px 0;
+	border-bottom: 1px solid #dbdbdb;
+}
+
+table .notes {
+	text-align: left !important;
+	font-size: 10pt;
+}
+
+table input[type="text"] {
+	width: 3em;
+	text-align: right;
+	font-size: 12pt;
+}
+
+select {
+	font-size: 12pt;
+}
+
+.r2-1 {
+	background-color: #c4f7ff;
+}
+
+.r4-1 {
+	background-color: #c4ffd4;
+}
+
+.r7-1 {
+	background-color: #fffdc4;
+}
+
+.r14-1 {
+	background-color: #ffdec4;
+}
+
+.r16-1 {
+	background-color: #ffc4c4;
+}
+
+.liquid {
+	color: #6017ff;
+}
+
+.tablet {
+	color: #1751ff;
+}
+
+.chewable {
+	color: #a534eb;
+}
+
+.appropriate {
+	color: initial;
+}
+
+.inappropriate {
+	color: #a6a6a6;
+}
+
+.primary_low {
+	color: red;
+}
+
+.primary_low::after {
+	content: "\2193";	/*Down arrow*/
+}
+
+.primary_good {
+	/*Nothing*/
+}
+
+.primary_high {
+	color: red;
+}
+
+.primary_high::after {
+	content: "\2191";	/*Up arrow*/
+}
+
+.secondary_bad {
+	color: #a6a6a6;
+}
+
+.secondary_good {
+	/*Nothing*/
+}
