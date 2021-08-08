@@ -300,14 +300,14 @@ table input[type="text"] {
 	font-size: 12pt;
 }
 
-table input[type="number"] {
+table input[type="decimal"] {
 	width: 3em;
 	text-align: right;
 	font-size: 12pt;
 	-moz-appearance: textfield;
 }
 
-input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button { 
+input[type="decimal"]::-webkit-inner-spin-button, input[type="decimal"]::-webkit-outer-spin-button { 
 	-webkit-appearance: none; 
 	margin: 0; 
 }
