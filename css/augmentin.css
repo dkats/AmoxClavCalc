@@ -300,18 +300,6 @@ table input[type="text"] {
 	font-size: 12pt;
 }
 
-table input[type="decimal"] {
-	width: 3em;
-	text-align: right;
-	font-size: 12pt;
-	-moz-appearance: textfield;
-}
-
-input[type="decimal"]::-webkit-inner-spin-button, input[type="decimal"]::-webkit-outer-spin-button { 
-	-webkit-appearance: none; 
-	margin: 0; 
-}
-
 td {
 	padding: 4px 4px;
 }
