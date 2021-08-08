@@ -10,21 +10,6 @@ function round(num, decimals) {
 	return (Math.round(num * Math.pow(10, decimals)) / Math.pow(10, decimals));
 }
 
-// Only allow numeric input
-function validate(id) {
-	var input = document.getElementById(id).value;
-	var out = '';
-	for(let i = 0; i < input.length; i++) {
-		var curr_char = input[i];
-		if(curr_char >= '0' && curr_char <= '9') {
-			out += curr_char;
-		}
-	}
-
-	document.getElementById(id).value = out;
-	return(out);
-}
-
 // Show/hide rows
 function show() {
 	switch(show_el.value) {
@@ -444,7 +429,7 @@ function refresh(listener) {
 	}
 
 	if(listener == "indication" || listener == "age") {
-		validate(amox_el.id);
+		// validate(amox_el.id);
 
 		switch(indication) {
 			case "":
@@ -523,7 +508,7 @@ function refresh(listener) {
 	}
 
 	if(listener == "weight") {
-		validate(wt_el.id);
+		// validate(wt_el.id);
 		wt = parseFloat(wt_el.value);
 	}
 
