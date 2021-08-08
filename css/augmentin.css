@@ -219,6 +219,28 @@ article {
 	visibility: visible;
 }
 
+.circle {
+	display: inline-block;
+	line-height: 1em;
+	width: 1em;
+	border-radius: 50%;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	color: purple;
+	border: 2px solid purple;
+	text-align: center;
+}
+
+.optional {
+	color: gray;
+	font-style: italic;
+	font-size: 10pt;
+}
+
+.optional::after {
+	content: "\00A0\00A0\00A0";
+}
+
 #input {
 	margin-top: 30px;
 	margin-bottom: 15px;
