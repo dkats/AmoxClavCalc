@@ -465,6 +465,11 @@ function refresh(listener) {
 				freq = 2;
 				amox_dose_max = 875;
 				break;
+			case "bite":
+				amox_day = 45;
+				freq = 2;
+				amox_dose_max = 875;
+				break;
 			case "gas":
 				amox_day = 40;
 				freq = 3;
