@@ -226,6 +226,17 @@ article {
 	border-radius: 50%;
 	-moz-border-radius: 50%;
 	-webkit-border-radius: 50%;
+	border: 1px solid;
+	text-align: center;
+}
+
+.circle_purple {
+	display: inline-block;
+	line-height: 1em;
+	width: 1em;
+	border-radius: 50%;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
 	color: purple;
 	border: 2px solid purple;
 	text-align: center;
