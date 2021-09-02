@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>How Does Amox-Clav Calculator Work?</title>
+<link rel="stylesheet" type="text/css" href="css/augmentin.css">
+<meta name="author" content="Daniel J. Kats">
+<script type="text/javascript" src="js/footer.js"></script>
+<script type="text/javascript" src="js/header.js"></script>
+</head>
+<body>
+<script>header();</script>
+<script type="text/javascript">document.getElementById("header_how").className = "active";</script>
+<article>
+
+	<h2>Basic</h2>
+
+		<p>When you select an indication, the calculator uses the corresponding dosing for amoxicillin-clavulanate from <em>UpToDate</em>. Based on the patient's weight, it then calculates the appropriate quantity of each formulation of amoxicillin-clavulanate to satisfy the amoxicillin dosing requirement. It then calculates the clavulanate that would be delivered by each formulation. The calculator only displays the formulations that have an appropriate amount of clavulanate and are able to deliver the necessary amount of amoxicillin &pm; 10%.</p>
+
+	<h2>Intermediate</h2>
+
+		<h4>Dosing settings:</h4>
+		<ul>
+			<li>Age <3 months: 30 mg/kg/day</li>
+			<li>Impetigo: 25 mg/kg/day divided BID, max 875 mg/dose</li>
+			<li>Acute otitis media: 90 mg/kg/day divided BID, max 4,000 mg/day</li>
+			<li>Intra-abdominal infection: 45 mg/kg/day divided BID, max 875 mg/dose</li>
+			<li>Community-acquired pneumonia: 90 mg/kg/day divided BID, max 4,000 mg/day</li>
+			<li>Sinusitis: 45 mg/kg/day divided BID, max 875 mg/dose</li>
+			<li>Dog/cat bite: 45 mg/kg/day divided BID, max 875 mg/dose</li>
+			<li>Chronic Group A Strep carrier: 40 mg/kg/day divided TID, max 500 mg/dose and 2,000 mg/day</li>
+			<li>UTI: 30 mg/kg/day divided TID, max 500 mg/dose and 2,000 mg/day</li>
+		</ul>
+		
+		<h4>Dosing calculation:</h4>
+		<ol>
+			<li>Set dosing "increment"</li>
+			<ul>
+				<li>Liquid: 0.1 mL if <3 mL, 0.2 mL if >3 mL</li>
+				<li>Tablet: 0.5 pills</li>
+			</ul>
+			<li>Calculate max dose and round to the nearest measurable increment</li>
+			<li>Calculate quantity (mL or # tabs) to match the selected dosing</li>
+			<ul>
+				<li>Calculate once by rounding down to the nearest measurable increment</li>
+				<li>Calculate once by rounding up to the nearest measurable increment</li>
+				<li>Display these as a range if they're different or as a single value if they're the same</li>
+			</ul>
+			<li>Calculate amoxicillin dose in mg/dose based on the calculated quantity/ies</li>
+			<li>Calculate amoxicillin dose in mg/day based on the mg/dose</li>
+			<li>Calculate clavulanate dose in mg/day based on the calculated quantity/ies</li>
+			<li>Flag the formulations in which either the rounded down or rounded up clavulanate dose is 6-10 mg/kg/day for <40 kg or 250-375 mg/day for >40 kg</li>
+			<ul>
+				<li>If weight is >40 kg, hide the ES formulation regardless of clavulanate dose</li>
+				<li>If weight is <40 kg, hide the XR formulation regardless of clavulanate dose</li>
+			</ul>
+		</ol>
+
+	<h2>Advanced</h2>
+
+		<p><strong>Source Code:</strong> <a href="https://github.com/dkats/AmoxClavCalc">GitHub</a> | <a href="https://github.com/dkats/AmoxClavCalc/blob/main/index.html">HTML</a> | <a href="https://github.com/dkats/AmoxClavCalc/blob/main/js/augmentin.js">JavaScript</a></p>
+
+	<h2>References</h2>
+	<ol>
+		<li>Klein, JO. Amoxicillin/clavulanate for infections in infants and children: past, present and future. <em>Pediatr Infect Dis J</em>. 2003;22:S139-48.</li>
+		<li>Bradley JS, Nelson JD (Editors). <em>Nelson's Pediatric Antimicrobial Therapy 20th ed</em>. Elk Grove, IL: American Academy of Pediatrics, 2014.</li>
+		<li>Lexicomp Online®, Pediatric & Neonatal Lexi-Drugs®, Hudson, Ohio: Lexi-Comp, Inc.; January 9, 2015.</li>
+	</ol>
+
+</article>
+</body>
+</html>
