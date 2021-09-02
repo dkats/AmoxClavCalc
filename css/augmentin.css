@@ -173,7 +173,7 @@ ul.menu li.homeclick:hover {
 }
 
 ul.menu li.active {
-	background-color: #fbedff;
+	background-color: white;
 	color: #0000a8;
 }
 
@@ -182,7 +182,7 @@ article {
 	position: fixed;
 	margin: 0px;
 	padding: 0px 28px;
-	top: 0px;
+	top: 46px;
 	bottom: 32px;
 	overflow: auto;
 	scroll-behavior: smooth;
