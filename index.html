@@ -16,9 +16,9 @@
 
 	<div class="center">
 		<table id="input">
-			<tr><td><strong><span class="circle_purple">1</span>&nbsp;&nbsp;Older than 3 months? </strong></td><td>
-				<input type="radio" name="age" id="age_under" value="<3" onchange="refresh('age');" /><label for="age_under">No</label>
-				<input type="radio" name="age" id="age_over" value=">3" onchange="refresh('age');" /><label for="age_over">Yes</label></td></tr>
+			<tr><td><strong><span class="circle_purple">1</span>&nbsp;&nbsp;Age: </strong></td><td><select id="age" onchange="refresh('age');">
+				<option value="<3">Younger than 3 months</option>
+				<option value=">3" selected>Older than 3 months</option>
 			<tr><td><strong><span class="circle_purple">2</span>&nbsp;&nbsp;Indication: </strong></td><td><select id="indication" onchange="refresh('indication');">
 				<option value=""></option>
 				<option value="impetigo">Impetigo</option>

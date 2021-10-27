@@ -256,8 +256,7 @@ class augmentin {
 }
 
 // Element IDs
-var age_over_id = "age_over";
-var age_under_id = "age_under";
+var age_id = "age";
 var indication_id = "indication";
 var amox_id = "dose";
 var amox_u_id = "dose_u";
@@ -370,8 +369,7 @@ var l600_clav_mg_id = "l600_clav_mg";
 var t1000_clav_mg_id = "t1000_clav_mg";
 
 // Elements
-var age_over_el = document.getElementById(age_over_id);
-var age_under_el = document.getElementById(age_under_id);
+var age_el = document.getElementById(age_id);
 var indication_el = document.getElementById(indication_id);
 var amox_el = document.getElementById(amox_id);
 var amox_u_el = document.getElementById(amox_u_id);
@@ -424,6 +422,7 @@ var wt = NaN;
 function refresh(listener) {
 
 	// Get updated values
+	var age = age_el.value;
 	var indication = indication_el.value;
 	var amox = amox_el.value;
 	var amox_u = amox_u_el.value;
@@ -517,8 +516,8 @@ function refresh(listener) {
 		}
 	}
 
-	if((listener == "age" || listener == "indication") && !age_over.checked && age_under.checked) {
-		// If <3 months old --> 30 mg/kg/day
+	// If <3 months old --> 30 mg/kg/day
+	if((listener == "age" || listener == "indication") && age == "<3") {
 		amox_day = 30;
 		amox_el.value = amox_day;
 
