@@ -557,14 +557,14 @@ function refresh(listener) {
 		}
 	}
 
-	if(!isNaN(freq)) {
-		// Update frequency
+	// Update frequency
+	if(listener == "frequency" || listener == "indication") {
 		var frequency = "";
 		freq_el.value = freq;
 
 		switch(freq) {
 			case 1:
-				frequency = "daily";
+				frequency = "Daily";
 				break;
 			case 2:
 				frequency = "BID";
@@ -578,8 +578,10 @@ function refresh(listener) {
 		for(var i = 0; i < formulations.length; i++) {
 			formulations[i].frequency = frequency;
 		}
+	}
 
-		// Calculate doses
+	// Calculate doses
+	if(!isNaN(freq)) {
 		if(!isNaN(wt) && wt != "" && wt > 0) {
 			if(!isNaN(amox_dose_perkg)) {
 				// Set minimum and maximum clavulanate levels based on weight (6-10 mg/kg/day if <40 kg, 250-375 mg/day if ≥40 kg)
