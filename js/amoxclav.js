@@ -413,6 +413,7 @@ for(var i = 0; i < class_clav_mg.length; i++) {
 }
 
 var amox_day = NaN;
+var amox_dose = NaN;
 var amox_dose_perkg = NaN;
 var amox_dose_max = NaN;
 var amox_day_max = NaN;
@@ -427,17 +428,36 @@ function refresh(listener) {
 	var amox = amox_el.value;
 	var amox_u = amox_u_el.value;
 	freq = parseInt(freq_el.value);
+	validate(wt_el.id);
 	wt = parseFloat(wt_el.value);
 
+	if(listener == "weight") {
+		if(!isNaN(amox_dose)) {
+			// Calculate the individual amox dose per kg
+			amox_dose_perkg = amox_dose / wt;
+		}
+	}
+
+	// Update dose
 	if(listener == "dose") {
 		switch(amox_u) {
+			// If dosing units are mg/kg/DAY
 			case "day":
+				// Set the daily amox dose
 				amox_day = parseFloat(amox);
-				amox_dose_perkg = amox_day / freq;
+				// Calculate the individual amox dose
+				amox_dose = amox_day / freq
+				// Calculate the individual amox dose per kg
+				amox_dose_perkg = amox_dose / wt;
 				break;
+			// If dosing units are mg/kg/DOSE
 			case "dose":
-				amox_dose_perkg = parseFloat(amox);
-				amox_day = amox_dose_perkg * freq;
+				// Set the individual amox dose
+				amox_dose = parseFloat(amox);
+				// Calculate the individual amox dose per kg
+				amox_dose_perkg = amox_dose / wt;
+				// Calculate the daily amox dose
+				amox_day = amox_dose * freq;
 				break;
 		}
 	}
@@ -497,7 +517,11 @@ function refresh(listener) {
 				amox_dose_max = 500;
 				break;
 		}
-		amox_dose_perkg = amox_day / freq;
+
+		// Calculate the individual amox dose
+		amox_dose = amox_day / freq
+		// Calculate the individual amox dose per kg
+		amox_dose_perkg = amox_dose / wt;
 
 		// Set dose value
 		amox_el.value = amox_day;
@@ -507,10 +531,12 @@ function refresh(listener) {
 			amox_u_el.value = "day";
 		}
 
+		// If there's a max individual amox dose, set that as the tooltip
 		if(!isNaN(amox_dose_max)) {
 			th_amox_mgdose_el.innerHTML = headerTooltip(th_amox_mgdose_text, "Max dose: " + amox_dose_max + " mg/dose");	
 		}
 
+		// If there's a max daily amox dose, set that as the tooltip
 		if(!isNaN(amox_day_max)) {
 			th_amox_mgkgday_el.innerHTML = headerTooltip(th_amox_mgkgday_text, "Max dose: " + amox_day_max + " mg/day");	
 		}
@@ -522,13 +548,13 @@ function refresh(listener) {
 		amox_el.value = amox_day;
 
 		if(!isNaN(freq)) {
-			amox_dose_perkg = amox_day / freq;
+			// Calculate the individual amox dose
+			amox_dose = amox_day / freq;
+			if(!isNaN(wt)) {
+				// Calculate the individual amox dose per kg
+				amox_dose_perkg = amox_dose / wt;
+			}
 		}
-	}
-
-	if(listener == "weight") {
-		validate(wt_el.id);
-		wt = parseFloat(wt_el.value);
 	}
 
 	if(!isNaN(freq)) {
