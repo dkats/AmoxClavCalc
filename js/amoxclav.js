@@ -444,7 +444,7 @@ function refresh(listener) {
 	wt = parseFloat(wt_el.value);
 
 	// Update dose
-	if(listener == "dose") {
+	if(listener == "dose" || listener == "frequency") {
 		switch(amox_u) {
 			// If dosing units are mg/kg/DAY
 			case "day":
