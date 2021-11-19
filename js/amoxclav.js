@@ -719,6 +719,14 @@ function refresh(listener) {
 
 // Sets a random age, indication, and weight
 function example() {
+	// Make sure the index page is loaded
+	// Get the current path
+	var pathlist = window.location.pathname.split("/");
+	// If the current path doesn't end in "index.html", load the index page
+	if(pathlist[pathlist.length-1] != "index.html" && pathlist[pathlist.length-1] != "") {
+		window.open('index.html','_self');
+	}
+
 	// Pick and set random indication (but don't pick the blank first option)
 	indication_el.selectedIndex = Math.floor(Math.random() * (indication_el.getElementsByTagName('option').length - 1) + 1);
 
