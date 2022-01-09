@@ -26,8 +26,8 @@ function validate(id) {
 }
 
 // Show/hide rows
-function show() {
-	switch(show_el.value) {
+function show_rows() {
+	switch(show_rows_el.value) {
 		case "all":
 			for(var i = 0; i < formulations.length; i++) {
 				formulations[i].display("");
@@ -39,6 +39,29 @@ function show() {
 			}
 			break;
 	}
+}
+
+// Show/hide elements
+function display_elements(display, list_elements) {
+	switch(display) {
+		case "show":
+			for(var i = 0; i < list_elements.length; i++) {
+				list_elements[i].style.display = "";
+			}
+			break;
+		case "hide":
+			for(var i = 0; i < list_elements.length; i++) {
+				list_elements[i].style.display = "none";
+			}
+			break;
+	}
+}
+
+// Show/hide elements
+function display_columns() {
+	display_elements(show_amox_mgdose_el.value, class_amox_mgdose);
+	display_elements(show_amox_mgkgdose_el.value, class_amox_mgkgdose);
+	display_elements(show_amox_mgkgday_el.value, class_amox_mgkgday);
 }
 
 // Finds Augmentin doses that meet amoxicillin and clavulanate criteria
@@ -280,8 +303,14 @@ var th_amox_mgdose_id = "th_amox_mgdose";
 var th_amox_mgkgday_id = "th_amox_mgkgday";
 var th_clav_mgkg_id = "th_clav_mgkg";
 var th_clav_mg_id = "th_clav_mg";
-var show_id = "show";
+var show_rows_id = "show_forms";
+var show_amox_mgdose_id = "show_amox_mgdose";
+var show_amox_mgkgdose_id = "show_amox_mgkgdose";
+var show_amox_mgkgday_id = "show_amox_mgkgday";
 
+var amox_mgdose_class = "amox_mgdose";
+var amox_mgkgdose_class = "amox_mgkgdose";
+var amox_mgkgday_class = "amox_mgkgday";
 var clav_mgkg_class = "clav_mgkg";
 var clav_mg_class = "clav_mg";
 
@@ -393,9 +422,15 @@ var th_amox_mgdose_el = document.getElementById(th_amox_mgdose_id);
 var th_amox_mgkgday_el = document.getElementById(th_amox_mgkgday_id);
 var th_clav_mgkg_el = document.getElementById(th_clav_mgkg_id);
 var th_clav_mg_el = document.getElementById(th_clav_mg_id);
-var show_el = document.getElementById(show_id);
+var show_rows_el = document.getElementById(show_rows_id);
+var show_amox_mgdose_el = document.getElementById(show_amox_mgdose_id);
+var show_amox_mgkgdose_el = document.getElementById(show_amox_mgkgdose_id);
+var show_amox_mgkgday_el = document.getElementById(show_amox_mgkgday_id);
 
 // Classes
+var class_amox_mgdose = document.getElementsByClassName(amox_mgdose_class);
+var class_amox_mgkgdose = document.getElementsByClassName(amox_mgkgdose_class);
+var class_amox_mgkgday = document.getElementsByClassName(amox_mgkgday_class);
 var class_clav_mgkg = document.getElementsByClassName(clav_mgkg_class);
 var class_clav_mg = document.getElementsByClassName(clav_mg_class);
 
@@ -424,6 +459,8 @@ var formulations = [t250, l125, l250, t500, l200, c200, l400, c400, t875, l600, 
 for(var i = 0; i < class_clav_mg.length; i++) {
 	class_clav_mg[i].style.display = "none";
 }
+// Start by showing/hiding appropriate columns
+display_columns();
 
 var amox_day_perkg = NaN;
 var amox_dose_perkg = NaN;
@@ -692,7 +729,7 @@ function refresh(listener) {
 				}
 
 				if(!one_row) {
-					show_el.value = "all";
+					show_rows_el.value = "all";
 				}
 			}
 		}
@@ -714,5 +751,7 @@ function refresh(listener) {
 		t1000.row.classList.add("inappropriate");
 	}
 
-	show();
+	show_rows();
+	display_columns();
 }
+

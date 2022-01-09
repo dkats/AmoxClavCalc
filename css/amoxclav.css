@@ -300,6 +300,10 @@ table {
 	border-collapse: collapse;
 }
 
+table .notes_head {
+	text-align: left !important;
+}
+
 table .notes {
 	text-align: left !important;
 	font-size: 10pt;
@@ -317,6 +321,18 @@ td {
 
 select {
 	font-size: 12pt;
+}
+
+.dose {
+	color: red;
+}
+
+.day {
+	color: DarkOrange;
+}
+
+.kg {
+	color: blue;
 }
 
 .r2-1 {
