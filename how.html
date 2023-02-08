@@ -21,7 +21,7 @@
 
 		<h4>Dosing settings:</h4>
 		<ul>
-			<li>Age <3 months: 30 mg/kg/day</li>
+			<li>Age <3 months: 30 mg/kg/day (age-based dosing takes precedence over indication-based dosing below)</li>
 			<li>Impetigo: 25 mg/kg/day divided BID, max 875 mg/dose</li>
 			<li>Acute otitis media: 90 mg/kg/day divided BID, max 4,000 mg/day</li>
 			<li>Intra-abdominal infection: 45 mg/kg/day divided BID, max 875 mg/dose</li>
@@ -34,27 +34,46 @@
 		
 		<h4>Dosing calculation:</h4>
 		<ol>
-			<li>Set dosing "increment"</li>
-			<ul>
-				<li>Liquid: 0.1 mL if <3 mL, 0.2 mL if >3 mL</li>
-				<li>Tablet: 0.5 pills</li>
-			</ul>
-			<li>Calculate max dose and round to the nearest measurable increment</li>
+			<li>With respect to the selected indication's amoxicillin dosing, calculate the ideal dose of each amoxicillin-clavulanate formulation</li>
 			<li>Calculate quantity (mL or # tabs) to match the selected dosing</li>
 			<ul>
-				<li>Calculate once by rounding down to the nearest measurable increment</li>
-				<li>Calculate once by rounding up to the nearest measurable increment</li>
-				<li>Display these as a range if they're different or as a single value if they're the same</li>
+				<li>Using the below measurable dosing increments, round the calculated ideal quantity to avoid impractical doses like 1.29 tablets or 2.837 mL</li>
+				<ul>
+					<li>Liquid: 0.1 mL if <3 mL, 0.2 mL if >3 mL</li>
+					<li>Tablet: 0.5 tablets</li>
+				</ul>
+				<li>Round both up and down to display an acceptable range of doses</li>
+				<ul>
+					<li>Example: if the ideal quantity is 1.736 tablets, round down to 1.5 tablets and round up to 2 tablets, yielding a range of 1.5&ndash;2 tablets</li>
+				</ul>
 			</ul>
-			<li>Calculate amoxicillin dose in mg/dose based on the calculated quantity/ies</li>
-			<li>Calculate amoxicillin dose in mg/day based on the mg/dose</li>
-			<li>Calculate clavulanate dose in mg/day based on the calculated quantity/ies</li>
-			<li>Flag the formulations in which either the rounded down or rounded up clavulanate dose is 6-10 mg/kg/day for <40 kg or 250-375 mg/day for >40 kg</li>
+			<li>Calculate amoxicillin dose in mg/dose based on the calculated practical quantities from Step 2</li>
+				<ul>
+					<li>Example: 1.5&ndash;2 tablets of amoxicillin-clavulanate 500–125 tablets would yield 750&ndash;1000 mg amoxicillin per dose</li>
+				</ul>
+			<li>Using the selected dosing frequency, convert the amoxicillin dose to mg/<u>day</u></li>
+			<li>Calculate clavulanate dose in mg/day based on the calculated practical quantities from Step 2</li>
+			<li>Flag the formulations in which either the rounded down or rounded up clavulanate dose is 6&ndash;10 mg/kg/day if <40 kg or 250&ndash;375 mg/day if >40 kg</li>
 			<ul>
 				<li>If weight is >40 kg, hide the ES formulation regardless of clavulanate dose</li>
 				<li>If weight is <40 kg, hide the XR formulation regardless of clavulanate dose</li>
 			</ul>
 		</ol>
+
+		<h4>Worked Examples</h4>
+			<h5>7-year-old (27 kg) being treated for community-acquired pneumonia</h5>
+				<p>Community-acquired pneumonia: amoxicillin 90 mg/kg/day divided BID; clavulanate 6&ndash;10 mg/kg/day</p>
+				<p>Amoxicillin = 90 mg/kg/day &times; 27 kg = 2,430 mg/day&emsp;|&emsp;2,430 mg/day divided BID = 2,430 mg/day &divide; 3 dose/day = 810 mg/dose</p>
+				<p>Clavulanate minimum = 6 mg/kg/day &times; 27 kg = 162 mg/day&emsp;|&emsp;162 mg/day divided BID = 162 mg/day &divide; 3 dose/day = 54 mg/dose<br />
+				Clavulanate maximum = 10 mg/kg/day &times; 27 kg = 270 mg/day&emsp;|&emsp;270 mg/day divided BID = 270 mg/day &divide; 3 dose/day = 90 mg/dose</p>
+				<p>Amoxicillin:clavulanate ratio = 810:54&ndash;810:90 = 15:1&ndash;9:1; out of the available formulations (2:1, 4:1, 7:1, 14:1, 16:1), 14:1 is the only one that is appropriate</p>
+
+			<h5>2-month-old (5 kg) being treated for recurrent acute otitis media</h5>
+				<p>Age < 3 months (regardless of indication): amoxicillin 30 mg/kg/day divided BID; clavulanate 6&ndash;10 mg/kg/day</p>
+				<p>Amoxicillin = 30 mg/kg/day &times; 5 kg = 150 mg/day&emsp;|&emsp;150 mg/day divided TID = 150 mg/day &divide; 3 dose/day = 50 mg/dose</p>
+				<p>Clavulanate minimum = 6 mg/kg/day &times; 5 kg = 30 mg/day&emsp;|&emsp;30 mg/day divided TID = 30 mg/day &divide; 3 dose/day = 10 mg/dose<br />
+				Clavulanate maximum = 10 mg/kg/day &times; 5 kg = 50 mg/day&emsp;|&emsp;50 mg/day divided TID = 50 mg/day &divide; 3 dose/day = 17 mg/dose</p>
+				<p>Amoxicillin:clavulanate ratio = 50:10&ndash;50:17 = 5:1&ndash;3:1; out of the available formulations (2:1, 4:1, 7:1, 14:1, 16:1), 4:1 is the only one that is appropriate</p>
 
 	<h2>Advanced</h2>
 
