@@ -102,7 +102,7 @@ h4 {
 
 h5 { 
 	display: block;
-	font-size: .83em;
+	font-size: 1em;
 	margin-top: 2.0em;
 	margin-bottom: 0em;
 	margin-left: 0;
@@ -112,7 +112,7 @@ h5 {
 
 h6 { 
 	display: block;
-	font-size: .67em;
+	font-size: .83em;
 	margin-top: 2.66em;
 	margin-bottom: 0em;
 	margin-left: 0;
