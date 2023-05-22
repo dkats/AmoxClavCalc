@@ -507,39 +507,49 @@ function refresh(listener) {
 			case "":
 				amox_day_perkg = "";
 				freq = NaN;
+				amox_day_max = NaN;
+				amox_dose_max = NaN;
 				break;
 			case "general":
 				amox_day_perkg = "";
 				freq = NaN;
+				amox_day_max = NaN;
+				amox_dose_max = NaN;
 				break;
 			case "impetigo":
 				amox_day_perkg = 25;
 				freq = 2;
+				amox_day_max = NaN;
 				amox_dose_max = 875;
 				break;
 			case "aom":
 				amox_day_perkg = 90;
 				freq = 2;
 				amox_day_max = 4000;
+				amox_dose_max = NaN;
 				break;
 			case "abdominal":
 				amox_day_perkg = 45;
 				freq = 2;
+				amox_day_max = NaN;
 				amox_dose_max = 875;
 				break;
 			case "cap":
 				amox_day_perkg = 90;
 				freq = 2;
 				amox_day_max = 4000;
+				amox_dose_max = NaN;
 				break;
 			case "sinus":
 				amox_day_perkg = 45;
 				freq = 2;
+				amox_day_max = NaN;
 				amox_dose_max = 875;
 				break;
 			case "bite":
 				amox_day_perkg = 45;
 				freq = 2;
+				amox_day_max = NaN;
 				amox_dose_max = 875;
 				break;
 			case "gas":
