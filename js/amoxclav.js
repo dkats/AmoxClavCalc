@@ -498,6 +498,13 @@ function refresh(listener) {
 				amox_day_perkg = amox_dose_perkg * freq;
 				break;
 		}
+
+		amox_dose_max = NaN;
+		th_amox_mgdose_el.innerHTML = th_amox_mgdose_text;
+		if(listener == "frequency") {
+			amox_day_max = NaN;
+			th_amox_mgkgday_el.innerHTML = th_amox_mgkgday_text;
+		}
 	}
 
 	if(listener == "indication" || listener == "age") {
@@ -580,11 +587,15 @@ function refresh(listener) {
 		// If there's a max individual amox dose, set that as the tooltip
 		if(!isNaN(amox_dose_max)) {
 			th_amox_mgdose_el.innerHTML = headerTooltip(th_amox_mgdose_text, "Max dose: " + amox_dose_max + " mg/dose");	
+		} else {
+			th_amox_mgdose_el.innerHTML = th_amox_mgdose_text;
 		}
 
 		// If there's a max daily amox dose, set that as the tooltip
 		if(!isNaN(amox_day_max)) {
 			th_amox_mgkgday_el.innerHTML = headerTooltip(th_amox_mgkgday_text, "Max dose: " + amox_day_max + " mg/day");	
+		} else {
+			th_amox_mgkgday_el.innerHTML = th_amox_mgkgday_text;
 		}
 	}
 
@@ -683,9 +694,9 @@ function refresh(listener) {
 					}
 
 					// Calculate maximums
-					let quant_max = NaN;
-					let amox_max = NaN;
-					let amox_min = NaN;
+					let quant_max = amox_dose_perkg / (formulations[i].amox_conc * liquid_correction) / freq;
+					let amox_max = amox_dose_perkg;
+					let amox_min = amox_dose_perkg;
 					if(!isNaN(amox_day_max)) {
 						quant_max = amox_day_max / (formulations[i].amox_conc * liquid_correction) / freq;
 						amox_max = Math.min(amox_dose_perkg, amox_day_max / freq / wt);
@@ -740,6 +751,8 @@ function refresh(listener) {
 
 				if(!one_row) {
 					show_rows_el.value = "all";
+				} else {
+					show_rows_el.value = "appropriate";
 				}
 			}
 		}
