@@ -32,10 +32,16 @@ function show_rows() {
 			for(let i = 0; i < formulations.length; i++) {
 				formulations[i].display("");
 			}
+			for (const el of document.querySelectorAll('.primary_low, .primary_high, .secondary_bad')) {
+				el.style.display = 'block';
+			}
 			break;
 		case "appropriate":
 			for(let i = 0; i < formulations.length; i++) {
 				formulations[i].display(formulations[i].show == true ? "" : "none");
+			}
+			for (const el of document.querySelectorAll('.primary_low, .primary_high, .secondary_bad')) {
+				el.style.display = 'none';
 			}
 			break;
 	}
@@ -126,7 +132,7 @@ function findDoses(amox_concentration, clav_concentration, increment, amox_min, 
 
 // Wrap in a span depending whether values are within min/max values
 function spanWrap(text, value1, min1, max1, value2, min2, max2, perkg = true, tooltip = true) {
-	let out = "<span class='";
+	let out = "<div class='";
 	if(value1 < min1) {
 		out += "primary_low";
 	} else if(value1 > max1) {
@@ -160,20 +166,20 @@ function spanWrap(text, value1, min1, max1, value2, min2, max2, perkg = true, to
 		out += "</span></span>";
 	}
 
-	out += "</span>";
+	out += "</div>";
 
 	return out;
 }
 
 // Wrap in a span depending on clavulanate value
 function spanSecondaryWrap(text, value1, min1, max1, value2, min2, max2) {
-	let out = "<span class='";
+	let out = "<div class='";
 	if(value1 < min1 || value2 < min2 || value1 > max1 || value2 > max2) {
 		out += "secondary_bad";
 	} else {
 		out += "secondary_good";
 	}
-	out += "'>" + text + "</span>";
+	out += "'>" + text + "</div>";
 	return out;
 }
 
@@ -728,7 +734,8 @@ function refresh(listener) {
 					let clav_high = quant_high * formulations[i].clav_conc * liquid_correction * freq / wt;
 
 					// Output the HTML either as a single value if rounding up and rounding down are equal or as a range if rounding up vs. down results in different values
-					let range_sep = "<br />";
+					// let range_sep = "<br />";
+					let range_sep = "";
 					formulations[i].quantity = (quant_low == quant_high || quant_low == 0 ? spanSecondaryWrap(quant_high, amox_high, amox_min, amox_max, clav_high, clav_min, clav_max) : spanSecondaryWrap(quant_low, amox_low, amox_min, amox_max, clav_low, clav_min, clav_max) + range_sep + spanSecondaryWrap(quant_high, amox_high, amox_min, amox_max, clav_high, clav_min, clav_max));
 					formulations[i].amox_dose_perkg = (quant_low == quant_high || quant_low == 0 ? spanWrap(amox_high, amox_high, amox_min, amox_max, clav_high, clav_min, clav_max, true) : spanWrap(amox_low, amox_low, amox_min, amox_max, clav_low, clav_min, clav_max, true) + range_sep + spanWrap(amox_high, amox_high, amox_min, amox_max, clav_high, clav_min, clav_max, true));
 					formulations[i].amox_dose_abs = (quant_low == quant_high || quant_low == 0 ? spanWrap(round(quant_high * formulations[i].amox_conc * liquid_correction, 3), round(quant_high * formulations[i].amox_conc * liquid_correction, 3), round(amox_min * wt, 3), round(amox_max * wt, 3), clav_high, clav_min, clav_max, false) : spanWrap(round(quant_low * formulations[i].amox_conc * liquid_correction, 3), round(quant_low * formulations[i].amox_conc * liquid_correction, 3), round(amox_min * wt, 3), round(amox_max * wt, 3), clav_low, clav_min, clav_max, false) + range_sep + spanWrap(round(quant_high * formulations[i].amox_conc * liquid_correction, 3), round(quant_high * formulations[i].amox_conc * liquid_correction, 3), round(amox_min * wt, 3), round(amox_max * wt, 3), clav_high, clav_min, clav_max, false));
